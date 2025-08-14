@@ -1,8 +1,6 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import CircuitBackground from './CircuitBackground';
-
 const HeroSection = () => {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -12,9 +10,9 @@ const HeroSection = () => {
       });
     }
   };
-
-  return (
-    <div className="relative w-full h-screen overflow-hidden" style={{ backgroundColor: '#222222' }}>
+  return <div className="relative w-full h-screen overflow-hidden" style={{
+    backgroundColor: '#222222'
+  }}>
       {/* Componente de Background Animado */}
       <div className="absolute top-0 left-0 w-full h-full z-0">
         <CircuitBackground />
@@ -47,19 +45,10 @@ const HeroSection = () => {
 
             {/* Botões de ação */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Button 
-                onClick={() => scrollToSection('servicos')} 
-                size="lg" 
-                className="bg-red-600 hover:bg-red-700 text-white px-10 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:shadow-2xl hover:scale-105 border-2 border-red-600"
-              >
+              <Button onClick={() => scrollToSection('servicos')} size="lg" className="bg-red-600 hover:bg-red-700 text-white px-10 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:shadow-2xl hover:scale-105 border-2 border-red-600">
                 Nossos Serviços
               </Button>
-              <Button 
-                onClick={() => scrollToSection('contato')} 
-                variant="outline" 
-                size="lg" 
-                className="border-2 border-white/80 text-white hover:bg-white hover:text-gray-900 px-10 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:shadow-2xl"
-              >
+              <Button onClick={() => scrollToSection('contato')} variant="outline" size="lg" className="border-2 border-white/80 hover:bg-white px-10 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:shadow-2xl text-gray-950">
                 Fale Conosco
               </Button>
             </div>
@@ -73,8 +62,6 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default HeroSection;

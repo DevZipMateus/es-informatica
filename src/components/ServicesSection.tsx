@@ -1,42 +1,35 @@
-
 import React from 'react';
 import { Code2, Globe, FileText, Headphones, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-
 const ServicesSection = () => {
-  const services = [
-    {
-      icon: Code2,
-      title: 'Sistema de Gestão',
-      description: 'Soluções completas e personalizadas para gestão empresarial, otimizando processos e aumentando a produtividade do seu negócio.',
-      features: ['ERP Personalizado', 'Controle de Estoque', 'Gestão Financeira', 'Relatórios Avançados'],
-      color: 'from-blue-500 to-cyan-600'
-    },
-    {
-      icon: Globe,
-      title: 'Criação de Sites e Loja Virtual',
-      description: 'Desenvolvimento de sites profissionais e e-commerce responsivos, com foco na experiência do usuário e conversão.',
-      features: ['Design Responsivo', 'E-commerce Completo', 'SEO Otimizado', 'Painel Administrativo'],
-      color: 'from-green-500 to-emerald-600'
-    },
-    {
-      icon: FileText,
-      title: 'Emissor de Notas Fiscais',
-      description: 'Sistema completo para emissão de notas fiscais eletrônicas, garantindo conformidade fiscal e agilidade nos processos.',
-      features: ['NFe e NFCe', 'Integração SEFAZ', 'Backup Automático', 'Suporte Técnico'],
-      color: 'from-purple-500 to-violet-600'
-    }
-  ];
-
+  const services = [{
+    icon: Code2,
+    title: 'Sistema de Gestão',
+    description: 'Soluções completas e personalizadas para gestão empresarial, otimizando processos e aumentando a produtividade do seu negócio.',
+    features: ['ERP Personalizado', 'Controle de Estoque', 'Gestão Financeira', 'Relatórios Avançados'],
+    color: 'from-blue-500 to-cyan-600'
+  }, {
+    icon: Globe,
+    title: 'Criação de Sites e Loja Virtual',
+    description: 'Desenvolvimento de sites profissionais e e-commerce responsivos, com foco na experiência do usuário e conversão.',
+    features: ['Design Responsivo', 'E-commerce Completo', 'SEO Otimizado', 'Painel Administrativo'],
+    color: 'from-green-500 to-emerald-600'
+  }, {
+    icon: FileText,
+    title: 'Emissor de Notas Fiscais',
+    description: 'Sistema completo para emissão de notas fiscais eletrônicas, garantindo conformidade fiscal e agilidade nos processos.',
+    features: ['NFe e NFCe', 'Integração SEFAZ', 'Backup Automático', 'Suporte Técnico'],
+    color: 'from-purple-500 to-violet-600'
+  }];
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({
+        behavior: 'smooth'
+      });
     }
   };
-
-  return (
-    <section id="servicos" className="py-20">
+  return <section id="servicos" className="py-20">
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-16 animate-fade-in">
@@ -51,8 +44,9 @@ const ServicesSection = () => {
 
         {/* Services Grid */}
         <div className="grid lg:grid-cols-3 gap-8 mb-16">
-          {services.map((service, index) => (
-            <div key={index} className="group bg-white/10 backdrop-blur-lg rounded-2xl overflow-hidden glass-effect hover-lift animate-fade-in" style={{animationDelay: `${index * 0.2}s`}}>
+          {services.map((service, index) => <div key={index} className="group bg-white/10 backdrop-blur-lg rounded-2xl overflow-hidden glass-effect hover-lift animate-fade-in" style={{
+          animationDelay: `${index * 0.2}s`
+        }}>
               {/* Service Header */}
               <div className={`bg-gradient-to-r ${service.color} p-6 text-white`}>
                 <div className="flex items-center justify-between mb-4">
@@ -72,24 +66,17 @@ const ServicesSection = () => {
                 
                 {/* Features */}
                 <div className="space-y-3 mb-6">
-                  {service.features.map((feature, featureIndex) => (
-                    <div key={featureIndex} className="flex items-center text-sm">
+                  {service.features.map((feature, featureIndex) => <div key={featureIndex} className="flex items-center text-sm">
                       <div className="w-2 h-2 bg-white rounded-full mr-3"></div>
                       <span className="text-white/90">{feature}</span>
-                    </div>
-                  ))}
+                    </div>)}
                 </div>
                 
-                <Button
-                  onClick={() => scrollToSection('contato')}
-                  variant="outline"
-                  className="w-full border-white text-white hover:bg-white hover:text-brand-primary transition-colors duration-200"
-                >
+                <Button onClick={() => scrollToSection('contato')} variant="outline" className="w-full border-white hover:bg-white transition-colors duration-200 text-zinc-950">
                   Solicitar Orçamento
                 </Button>
               </div>
-            </div>
-          ))}
+            </div>)}
         </div>
 
         {/* Support Section */}
@@ -105,26 +92,15 @@ const ServicesSection = () => {
             completo para todas as nossas soluções.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              onClick={() => window.open('https://wa.me/5541996667472', '_blank')}
-              size="lg"
-              className="bg-white text-brand-primary hover:bg-white/90 px-8 py-4 rounded-xl font-semibold"
-            >
+            <Button onClick={() => window.open('https://wa.me/5541996667472', '_blank')} size="lg" className="bg-white text-brand-primary hover:bg-white/90 px-8 py-4 rounded-xl font-semibold">
               WhatsApp: (41) 99666-7472
             </Button>
-            <Button
-              onClick={() => window.open('mailto:edinho@esinformatica.com.br', '_blank')}
-              variant="outline"
-              size="lg"
-              className="border-2 border-white text-white hover:bg-white hover:text-brand-primary px-8 py-4 rounded-xl font-semibold"
-            >
+            <Button onClick={() => window.open('mailto:edinho@esinformatica.com.br', '_blank')} variant="outline" size="lg" className="border-2 border-white hover:bg-white px-8 py-4 rounded-xl font-semibold text-zinc-950">
               E-mail: edinho@esinformatica.com.br
             </Button>
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default ServicesSection;

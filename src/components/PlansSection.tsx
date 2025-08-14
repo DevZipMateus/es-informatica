@@ -1,29 +1,17 @@
-
 import React from 'react';
 import { CheckCircle, MessageSquare, Calculator } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-
 const PlansSection = () => {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({
+        behavior: 'smooth'
+      });
     }
   };
-
-  const planFeatures = [
-    'Análise completa das necessidades',
-    'Desenvolvimento personalizado',
-    'Treinamento da equipe',
-    'Suporte técnico especializado',
-    'Atualizações e melhorias',
-    'Backup e segurança',
-    'Relatórios personalizados',
-    'Integração com outros sistemas'
-  ];
-
-  return (
-    <section id="planos" className="py-20">
+  const planFeatures = ['Análise completa das necessidades', 'Desenvolvimento personalizado', 'Treinamento da equipe', 'Suporte técnico especializado', 'Atualizações e melhorias', 'Backup e segurança', 'Relatórios personalizados', 'Integração com outros sistemas'];
+  return <section id="planos" className="py-20">
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-16 animate-fade-in">
@@ -59,12 +47,10 @@ const PlansSection = () => {
                 <h4 className="text-lg font-semibold text-white mb-4">
                   O que está incluído:
                 </h4>
-                {planFeatures.map((feature, index) => (
-                  <div key={index} className="flex items-center">
+                {planFeatures.map((feature, index) => <div key={index} className="flex items-center">
                     <CheckCircle className="h-5 w-5 text-green-400 mr-3 flex-shrink-0" />
                     <span className="text-white/80">{feature}</span>
-                  </div>
-                ))}
+                  </div>)}
               </div>
 
               <div className="bg-white/10 rounded-xl p-6 mb-8">
@@ -91,11 +77,7 @@ const PlansSection = () => {
                 </div>
               </div>
 
-              <Button
-                onClick={() => scrollToSection('contato')}
-                size="lg"
-                className="w-full bg-white text-brand-primary hover:bg-white/90 py-4 rounded-xl font-semibold text-lg"
-              >
+              <Button onClick={() => scrollToSection('contato')} size="lg" className="w-full bg-white text-brand-primary hover:bg-white/90 py-4 rounded-xl font-semibold text-lg">
                 Solicitar Orçamento Gratuito
               </Button>
             </div>
@@ -136,17 +118,10 @@ const PlansSection = () => {
 
               <div className="mt-8 pt-8 border-t border-white/20">
                 <div className="flex items-center justify-center space-x-6">
-                  <Button
-                    onClick={() => window.open('https://wa.me/5541996667472', '_blank')}
-                    className="bg-white text-brand-primary hover:bg-white/90 px-6 py-3 rounded-lg font-semibold"
-                  >
+                  <Button onClick={() => window.open('https://wa.me/5541996667472', '_blank')} className="bg-white text-brand-primary hover:bg-white/90 px-6 py-3 rounded-lg font-semibold">
                     WhatsApp
                   </Button>
-                  <Button
-                    onClick={() => window.open('mailto:edinho@esinformatica.com.br', '_blank')}
-                    variant="outline"
-                    className="border-2 border-white text-white hover:bg-white hover:text-brand-primary px-6 py-3 rounded-lg font-semibold"
-                  >
+                  <Button onClick={() => window.open('mailto:edinho@esinformatica.com.br', '_blank')} variant="outline" className="border-2 border-white hover:bg-white px-6 py-3 rounded-lg font-semibold text-gray-950">
                     E-mail
                   </Button>
                 </div>
@@ -155,8 +130,6 @@ const PlansSection = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default PlansSection;
