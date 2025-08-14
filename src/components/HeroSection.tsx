@@ -22,29 +22,35 @@ const HeroSection = () => {
 
       {/* Conteúdo da Hero Section */}
       <div className="relative z-10 flex flex-col justify-center items-center h-full text-white text-center p-5">
-        <h1 className="text-4xl lg:text-6xl font-bold mb-6 leading-tight">
-          Inovação e <span className="text-white/90">Tecnologia</span> para seu Negócio
-        </h1>
-        <p className="max-w-2xl mx-auto text-xl lg:text-2xl mb-8 text-white/90 leading-relaxed">
-          Transformamos ideias em soluções digitais inteligentes. 
-          Sistemas de gestão, sites profissionais e emissores de notas fiscais.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4">
-          <Button 
-            onClick={() => scrollToSection('servicos')} 
-            size="lg" 
-            className="bg-white text-gray-900 hover:bg-white/90 px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:shadow-xl hover:scale-105"
-          >
-            Nossos Serviços
-          </Button>
-          <Button 
-            onClick={() => scrollToSection('contato')} 
-            variant="outline" 
-            size="lg" 
-            className="border-2 border-white hover:bg-white hover:text-gray-900 px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300"
-          >
-            Fale Conosco
-          </Button>
+        {/* Fundo preto esmaecido atrás do conteúdo */}
+        <div className="absolute inset-0 bg-black/40 rounded-2xl"></div>
+        
+        {/* Conteúdo com z-index maior para ficar acima do overlay */}
+        <div className="relative z-10">
+          <h1 className="text-4xl lg:text-6xl font-bold mb-6 leading-tight">
+            Inovação e <span className="text-white/90">Tecnologia</span> para seu Negócio
+          </h1>
+          <p className="max-w-2xl mx-auto text-xl lg:text-2xl mb-8 text-white/90 leading-relaxed">
+            Transformamos ideias em soluções digitais inteligentes. 
+            Sistemas de gestão, sites profissionais e emissores de notas fiscais.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <Button 
+              onClick={() => scrollToSection('servicos')} 
+              size="lg" 
+              className="bg-white text-gray-900 hover:bg-white/90 px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:shadow-xl hover:scale-105"
+            >
+              Nossos Serviços
+            </Button>
+            <Button 
+              onClick={() => scrollToSection('contato')} 
+              variant="outline" 
+              size="lg" 
+              className="border-2 border-white hover:bg-white hover:text-gray-900 px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300"
+            >
+              Fale Conosco
+            </Button>
+          </div>
         </div>
       </div>
     </div>
