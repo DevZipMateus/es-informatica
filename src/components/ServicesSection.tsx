@@ -36,14 +36,14 @@ const ServicesSection = () => {
   };
 
   return (
-    <section id="servicos" className="py-20 bg-white">
+    <section id="servicos" className="py-20">
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl lg:text-5xl font-bold text-brand-secondary mb-6">
+          <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
             Nossos Serviços
           </h2>
-          <p className="text-xl text-brand-accent max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
             Oferecemos soluções tecnológicas completas e personalizadas para 
             atender às necessidades específicas do seu negócio.
           </p>
@@ -52,7 +52,7 @@ const ServicesSection = () => {
         {/* Services Grid */}
         <div className="grid lg:grid-cols-3 gap-8 mb-16">
           {services.map((service, index) => (
-            <div key={index} className="group bg-white rounded-2xl shadow-lg overflow-hidden hover-lift animate-fade-in" style={{animationDelay: `${index * 0.2}s`}}>
+            <div key={index} className="group bg-white/10 backdrop-blur-lg rounded-2xl overflow-hidden glass-effect hover-lift animate-fade-in" style={{animationDelay: `${index * 0.2}s`}}>
               {/* Service Header */}
               <div className={`bg-gradient-to-r ${service.color} p-6 text-white`}>
                 <div className="flex items-center justify-between mb-4">
@@ -66,7 +66,7 @@ const ServicesSection = () => {
               
               {/* Service Content */}
               <div className="p-6">
-                <p className="text-brand-accent mb-6 leading-relaxed">
+                <p className="text-white/80 mb-6 leading-relaxed">
                   {service.description}
                 </p>
                 
@@ -74,8 +74,8 @@ const ServicesSection = () => {
                 <div className="space-y-3 mb-6">
                   {service.features.map((feature, featureIndex) => (
                     <div key={featureIndex} className="flex items-center text-sm">
-                      <div className="w-2 h-2 bg-brand-primary rounded-full mr-3"></div>
-                      <span className="text-brand-secondary">{feature}</span>
+                      <div className="w-2 h-2 bg-white rounded-full mr-3"></div>
+                      <span className="text-white/90">{feature}</span>
                     </div>
                   ))}
                 </div>
@@ -83,7 +83,7 @@ const ServicesSection = () => {
                 <Button
                   onClick={() => scrollToSection('contato')}
                   variant="outline"
-                  className="w-full border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white transition-colors duration-200"
+                  className="w-full border-white text-white hover:bg-white hover:text-brand-primary transition-colors duration-200"
                 >
                   Solicitar Orçamento
                 </Button>
@@ -93,7 +93,7 @@ const ServicesSection = () => {
         </div>
 
         {/* Support Section */}
-        <div className="bg-gradient-to-r from-brand-primary to-brand-secondary rounded-2xl p-8 lg:p-12 text-white text-center animate-fade-in">
+        <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 lg:p-12 text-white text-center glass-effect animate-fade-in">
           <div className="flex justify-center mb-6">
             <div className="bg-white/20 rounded-full p-4">
               <Headphones className="h-12 w-12" />

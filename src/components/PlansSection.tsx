@@ -23,14 +23,14 @@ const PlansSection = () => {
   ];
 
   return (
-    <section id="planos" className="py-20 section-light">
+    <section id="planos" className="py-20">
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl lg:text-5xl font-bold text-brand-secondary mb-6">
+          <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
             Planos Personalizados
           </h2>
-          <p className="text-xl text-brand-accent max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
             Cada negócio é único. Por isso, criamos soluções sob medida para suas necessidades específicas.
           </p>
         </div>
@@ -38,55 +38,55 @@ const PlansSection = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
           <div className="animate-slide-in">
-            <div className="bg-white rounded-2xl p-8 shadow-lg">
+            <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 glass-effect">
               <div className="flex items-center mb-6">
-                <div className="bg-brand-primary rounded-full p-3 mr-4">
+                <div className="bg-white/20 rounded-full p-3 mr-4">
                   <Calculator className="h-8 w-8 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-brand-secondary">Orçamento Personalizado</h3>
-                  <p className="text-brand-accent">Valores justos para cada projeto</p>
+                  <h3 className="text-2xl font-bold text-white">Orçamento Personalizado</h3>
+                  <p className="text-white/80">Valores justos para cada projeto</p>
                 </div>
               </div>
               
-              <p className="text-brand-accent mb-8 leading-relaxed">
+              <p className="text-white/80 mb-8 leading-relaxed">
                 Nossos serviços são voltados às necessidades específicas de cada cliente. 
                 Não trabalhamos com preços fixos, pois acreditamos que cada projeto merece 
                 uma abordagem única e personalizada.
               </p>
 
               <div className="space-y-4 mb-8">
-                <h4 className="text-lg font-semibold text-brand-secondary mb-4">
+                <h4 className="text-lg font-semibold text-white mb-4">
                   O que está incluído:
                 </h4>
                 {planFeatures.map((feature, index) => (
                   <div key={index} className="flex items-center">
-                    <CheckCircle className="h-5 w-5 text-green-500 mr-3 flex-shrink-0" />
-                    <span className="text-brand-accent">{feature}</span>
+                    <CheckCircle className="h-5 w-5 text-green-400 mr-3 flex-shrink-0" />
+                    <span className="text-white/80">{feature}</span>
                   </div>
                 ))}
               </div>
 
-              <div className="bg-brand-primary/5 rounded-xl p-6 mb-8">
-                <h4 className="text-lg font-semibold text-brand-primary mb-3">
+              <div className="bg-white/10 rounded-xl p-6 mb-8">
+                <h4 className="text-lg font-semibold text-white mb-3">
                   Nosso Processo:
                 </h4>
                 <div className="space-y-3">
                   <div className="flex items-start">
-                    <div className="bg-brand-primary text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mr-3 mt-0.5">1</div>
-                    <span className="text-brand-secondary text-sm">Contato inicial para entender suas necessidades</span>
+                    <div className="bg-white text-brand-primary rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mr-3 mt-0.5">1</div>
+                    <span className="text-white/80 text-sm">Contato inicial para entender suas necessidades</span>
                   </div>
                   <div className="flex items-start">
-                    <div className="bg-brand-primary text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mr-3 mt-0.5">2</div>
-                    <span className="text-brand-secondary text-sm">Apresentação detalhada da solução proposta</span>
+                    <div className="bg-white text-brand-primary rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mr-3 mt-0.5">2</div>
+                    <span className="text-white/80 text-sm">Apresentação detalhada da solução proposta</span>
                   </div>
                   <div className="flex items-start">
-                    <div className="bg-brand-primary text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mr-3 mt-0.5">3</div>
-                    <span className="text-brand-secondary text-sm">Negociação transparente de valores e prazos</span>
+                    <div className="bg-white text-brand-primary rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mr-3 mt-0.5">3</div>
+                    <span className="text-white/80 text-sm">Negociação transparente de valores e prazos</span>
                   </div>
                   <div className="flex items-start">
-                    <div className="bg-brand-primary text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mr-3 mt-0.5">4</div>
-                    <span className="text-brand-secondary text-sm">Desenvolvimento e implementação da solução</span>
+                    <div className="bg-white text-brand-primary rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mr-3 mt-0.5">4</div>
+                    <span className="text-white/80 text-sm">Desenvolvimento e implementação da solução</span>
                   </div>
                 </div>
               </div>
@@ -94,7 +94,7 @@ const PlansSection = () => {
               <Button
                 onClick={() => scrollToSection('contato')}
                 size="lg"
-                className="w-full bg-brand-primary hover:bg-brand-primary/90 text-white py-4 rounded-xl font-semibold text-lg"
+                className="w-full bg-white text-brand-primary hover:bg-white/90 py-4 rounded-xl font-semibold text-lg"
               >
                 Solicitar Orçamento Gratuito
               </Button>
@@ -103,7 +103,7 @@ const PlansSection = () => {
 
           {/* Visual */}
           <div className="animate-fade-in">
-            <div className="bg-gradient-to-br from-brand-primary to-brand-secondary rounded-2xl p-8 lg:p-12 text-white">
+            <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 lg:p-12 text-white glass-effect">
               <div className="text-center mb-8">
                 <MessageSquare className="h-16 w-16 mx-auto mb-4 text-white/80" />
                 <h3 className="text-3xl font-bold mb-4">Vamos Conversar?</h3>

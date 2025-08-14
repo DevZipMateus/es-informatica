@@ -83,14 +83,14 @@ ${formData.message}`;
   ];
 
   return (
-    <section id="contato" className="py-20 section-light">
+    <section id="contato" className="py-20">
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl lg:text-5xl font-bold text-brand-secondary mb-6">
+          <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
             Entre em Contato
           </h2>
-          <p className="text-xl text-brand-accent max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
             Pronto para transformar suas ideias em realidade? 
             Entre em contato conosco e vamos conversar sobre seu projeto.
           </p>
@@ -99,15 +99,15 @@ ${formData.message}`;
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Form */}
           <div className="animate-slide-in">
-            <div className="bg-white rounded-2xl p-8 shadow-lg">
-              <h3 className="text-2xl font-bold text-brand-secondary mb-6">
+            <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 glass-effect">
+              <h3 className="text-2xl font-bold text-white mb-6">
                 Solicite seu Orçamento
               </h3>
               
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-brand-secondary mb-2">
+                    <label className="block text-sm font-medium text-white mb-2">
                       Nome *
                     </label>
                     <Input
@@ -116,11 +116,11 @@ ${formData.message}`;
                       onChange={handleInputChange}
                       placeholder="Seu nome completo"
                       required
-                      className="border-gray-300 focus:border-brand-primary"
+                      className="bg-white/10 border-white/20 text-white placeholder:text-white/60 focus:border-white"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-brand-secondary mb-2">
+                    <label className="block text-sm font-medium text-white mb-2">
                       Telefone
                     </label>
                     <Input
@@ -128,13 +128,13 @@ ${formData.message}`;
                       value={formData.phone}
                       onChange={handleInputChange}
                       placeholder="(41) 99999-9999"
-                      className="border-gray-300 focus:border-brand-primary"
+                      className="bg-white/10 border-white/20 text-white placeholder:text-white/60 focus:border-white"
                     />
                   </div>
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-medium text-brand-secondary mb-2">
+                  <label className="block text-sm font-medium text-white mb-2">
                     E-mail *
                   </label>
                   <Input
@@ -144,31 +144,31 @@ ${formData.message}`;
                     onChange={handleInputChange}
                     placeholder="seu@email.com"
                     required
-                    className="border-gray-300 focus:border-brand-primary"
+                    className="bg-white/10 border-white/20 text-white placeholder:text-white/60 focus:border-white"
                   />
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-medium text-brand-secondary mb-2">
+                  <label className="block text-sm font-medium text-white mb-2">
                     Serviço de Interesse
                   </label>
                   <select
                     name="service"
                     value={formData.service}
                     onChange={handleInputChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/20"
+                    className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-white focus:border-white focus:outline-none focus:ring-2 focus:ring-white/20"
                   >
-                    <option value="">Selecione um serviço</option>
-                    <option value="sistema-gestao">Sistema de Gestão</option>
-                    <option value="site-ecommerce">Site / E-commerce</option>
-                    <option value="emissor-nfe">Emissor de NFe</option>
-                    <option value="consultoria">Consultoria</option>
-                    <option value="outros">Outros</option>
+                    <option value="" className="text-gray-800">Selecione um serviço</option>
+                    <option value="sistema-gestao" className="text-gray-800">Sistema de Gestão</option>
+                    <option value="site-ecommerce" className="text-gray-800">Site / E-commerce</option>
+                    <option value="emissor-nfe" className="text-gray-800">Emissor de NFe</option>
+                    <option value="consultoria" className="text-gray-800">Consultoria</option>
+                    <option value="outros" className="text-gray-800">Outros</option>
                   </select>
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-medium text-brand-secondary mb-2">
+                  <label className="block text-sm font-medium text-white mb-2">
                     Mensagem *
                   </label>
                   <Textarea
@@ -178,14 +178,14 @@ ${formData.message}`;
                     placeholder="Descreva seu projeto ou necessidade..."
                     rows={4}
                     required
-                    className="border-gray-300 focus:border-brand-primary resize-none"
+                    className="bg-white/10 border-white/20 text-white placeholder:text-white/60 focus:border-white resize-none"
                   />
                 </div>
                 
                 <Button
                   type="submit"
                   size="lg"
-                  className="w-full bg-brand-primary hover:bg-brand-primary/90 text-white py-4 rounded-xl font-semibold text-lg"
+                  className="w-full bg-white text-brand-primary hover:bg-white/90 py-4 rounded-xl font-semibold text-lg"
                 >
                   <Send className="mr-2 h-5 w-5" />
                   Enviar via WhatsApp
@@ -196,7 +196,7 @@ ${formData.message}`;
 
           {/* Contact Methods */}
           <div className="animate-fade-in">
-            <h3 className="text-2xl font-bold text-brand-secondary mb-8">
+            <h3 className="text-2xl font-bold text-white mb-8">
               Formas de Contato
             </h3>
             
@@ -205,17 +205,17 @@ ${formData.message}`;
                 <div
                   key={index}
                   onClick={method.action}
-                  className="bg-white rounded-xl p-6 shadow-sm hover-lift cursor-pointer group"
+                  className="bg-white/10 backdrop-blur-lg rounded-xl p-6 glass-effect hover-lift cursor-pointer group"
                 >
                   <div className="flex items-center">
                     <div className={`bg-gradient-to-r ${method.color} rounded-xl p-4 mr-4 group-hover:scale-110 transition-transform duration-200`}>
                       <method.icon className="h-8 w-8 text-white" />
                     </div>
                     <div>
-                      <h4 className="text-lg font-semibold text-brand-secondary mb-1">
+                      <h4 className="text-lg font-semibold text-white mb-1">
                         {method.title}
                       </h4>
-                      <p className="text-brand-primary font-medium">
+                      <p className="text-white/80 font-medium">
                         {method.info}
                       </p>
                     </div>
@@ -225,7 +225,7 @@ ${formData.message}`;
             </div>
 
             {/* CTA */}
-            <div className="bg-gradient-to-r from-brand-primary to-brand-secondary rounded-2xl p-8 text-white">
+            <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 text-white glass-effect">
               <h4 className="text-2xl font-bold mb-4">
                 Atendimento Personalizado
               </h4>

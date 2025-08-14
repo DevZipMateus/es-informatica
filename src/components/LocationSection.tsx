@@ -31,14 +31,14 @@ const LocationSection = () => {
   ];
 
   return (
-    <section id="localizacao" className="py-20 bg-white">
+    <section id="localizacao" className="py-20">
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl lg:text-5xl font-bold text-brand-secondary mb-6">
+          <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
             Nossa Localização
           </h2>
-          <p className="text-xl text-brand-accent max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
             Estamos estrategicamente localizados no centro de Guaratuba, 
             facilitando o acesso para nossos clientes da região.
           </p>
@@ -47,24 +47,24 @@ const LocationSection = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Contact Info */}
           <div className="animate-slide-in">
-            <h3 className="text-2xl font-bold text-brand-secondary mb-8">
+            <h3 className="text-2xl font-bold text-white mb-8">
               Informações de Contato
             </h3>
             <div className="grid sm:grid-cols-2 lg:grid-cols-1 gap-6">
               {contactInfo.map((item, index) => (
-                <div key={index} className="bg-gray-50 rounded-xl p-6 hover-lift">
+                <div key={index} className="bg-white/10 backdrop-blur-lg rounded-xl p-6 glass-effect hover-lift">
                   <div className="flex items-start space-x-4">
-                    <div className="bg-brand-primary rounded-lg p-3 flex-shrink-0">
+                    <div className="bg-white/20 rounded-lg p-3 flex-shrink-0">
                       <item.icon className="h-6 w-6 text-white" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-brand-secondary mb-1">
+                      <h4 className="font-semibold text-white mb-1">
                         {item.title}
                       </h4>
-                      <p className="text-brand-primary font-medium mb-1">
+                      <p className="text-white font-medium mb-1">
                         {item.info}
                       </p>
-                      <p className="text-brand-accent text-sm">
+                      <p className="text-white/70 text-sm">
                         {item.subInfo}
                       </p>
                     </div>
@@ -74,7 +74,7 @@ const LocationSection = () => {
             </div>
 
             {/* Social Media */}
-            <div className="mt-8 p-6 bg-gradient-to-r from-brand-primary to-brand-secondary rounded-xl text-white">
+            <div className="mt-8 p-6 bg-white/10 backdrop-blur-lg rounded-xl text-white glass-effect">
               <h4 className="text-xl font-bold mb-4">Siga-nos nas Redes Sociais</h4>
               <div className="flex space-x-4">
                 <a
@@ -113,21 +113,21 @@ const LocationSection = () => {
 
           {/* Map Placeholder */}
           <div className="animate-fade-in">
-            <div className="bg-gray-100 rounded-2xl p-8 h-[500px] flex items-center justify-center">
+            <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 h-[500px] flex items-center justify-center glass-effect">
               <div className="text-center">
-                <MapPin className="h-16 w-16 text-brand-primary mx-auto mb-4" />
-                <h4 className="text-2xl font-bold text-brand-secondary mb-4">
+                <MapPin className="h-16 w-16 text-white mx-auto mb-4" />
+                <h4 className="text-2xl font-bold text-white mb-4">
                   Localização Central
                 </h4>
-                <p className="text-brand-accent mb-6 max-w-sm">
+                <p className="text-white/80 mb-6 max-w-sm">
                   Estamos localizados no centro de Guaratuba, com fácil acesso 
                   e estacionamento disponível.
                 </p>
-                <div className="bg-white rounded-lg p-4 shadow-sm">
-                  <p className="font-semibold text-brand-secondary mb-2">
+                <div className="bg-white/10 rounded-lg p-4">
+                  <p className="font-semibold text-white mb-2">
                     Av. Damião Botelho de Souza, 522
                   </p>
-                  <p className="text-brand-accent">
+                  <p className="text-white/80">
                     Centro - Guaratuba, PR
                   </p>
                 </div>
