@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import ShimmeringBackground from './ShimmeringBackground';
+import CircuitBackground from './CircuitBackground';
 
 const HeroSection = () => {
   const scrollToSection = (sectionId: string) => {
@@ -14,10 +14,10 @@ const HeroSection = () => {
   };
 
   return (
-    <div className="relative w-full h-screen overflow-hidden bg-gray-900">
+    <div className="relative w-full h-screen overflow-hidden" style={{ backgroundColor: '#222222' }}>
       {/* Componente de Background Animado */}
       <div className="absolute top-0 left-0 w-full h-full z-0">
-        <ShimmeringBackground />
+        <CircuitBackground />
       </div>
 
       {/* Conteúdo da Hero Section */}
