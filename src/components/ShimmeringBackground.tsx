@@ -50,8 +50,8 @@ export default function ShimmeringBackground() {
   return (
     <div className="absolute inset-0 w-full h-full">
       <Canvas camera={{ position: [0, 0, 1] }}>
-        {/* Partículas Vermelhas */}
-        <Particles count={2000} color="#ff0000" size={0.015} />
+        {/* Partículas Vermelhas - NÚMERO AUMENTADO PARA 5000 */}
+        <Particles count={5000} color="#ff0000" size={0.015} />
         
         {/* Partículas Cinzas */}
         <Particles count={2000} color="#808080" size={0.01} />
