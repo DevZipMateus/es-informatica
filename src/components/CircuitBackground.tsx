@@ -18,6 +18,11 @@ const CircuitBackground = () => {
     let animationFrameId: number;
     let particles: Particle[] = [];
     
+    // --- CONTROLE DE VELOCIDADE ---
+    let lastUpdateTime = 0;
+    // Intervalo em milissegundos. Quanto MAIOR o número, MAIS LENTA a animação.
+    const updateInterval = 80; // Antes era instantâneo, agora atualiza a cada 80ms
+    
     // Ajusta o tamanho do canvas para preencher o container
     const resizeCanvas = () => {
       canvas.width = canvas.offsetWidth;
@@ -119,20 +124,32 @@ const CircuitBackground = () => {
       particles.push(new Particle());
     }
 
-    const animate = () => {
-      // Desenha um fundo semi-transparente para criar o efeito de "fade"
+    // A função animate agora recebe o tempo atual
+    const animate = (currentTime: number) => {
+      // O desenho acontece em todo frame para a animação continuar fluida
       ctx.fillStyle = `rgba(34, 34, 34, 0.2)`;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-
+      
       particles.forEach(p => {
-        p.update();
-        p.draw();
+        p.draw(); // O desenho é constante
       });
+      
+      // --- LÓGICA DE CONTROLE DE VELOCIDADE ---
+      // Calcula o tempo passado desde a última atualização
+      const deltaTime = currentTime - lastUpdateTime;
+
+      // Apenas atualiza a posição se o tempo passado for maior que o nosso intervalo
+      if (deltaTime > updateInterval) {
+        lastUpdateTime = currentTime; // Reseta o tempo da última atualização
+        particles.forEach(p => {
+          p.update(); // A atualização da lógica/posição só acontece aqui
+        });
+      }
 
       animationFrameId = requestAnimationFrame(animate);
     };
 
-    animate();
+    animate(0); // Inicia a animação
 
     // Limpeza ao desmontar o componente
     return () => {
