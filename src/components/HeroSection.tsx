@@ -1,23 +1,25 @@
-
 import React from 'react';
 import { ArrowRight, Code, Globe, Smartphone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-
 const HeroSection = () => {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({
+        behavior: 'smooth'
+      });
     }
   };
-
-  return (
-    <section id="inicio" className="relative min-h-screen flex items-center hero-gradient overflow-hidden">
+  return <section id="inicio" className="relative min-h-screen flex items-center hero-gradient overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-20 left-10 w-32 h-32 bg-white rounded-full blur-3xl animate-float"></div>
-        <div className="absolute bottom-20 right-10 w-48 h-48 bg-white rounded-full blur-3xl animate-float" style={{animationDelay: '1s'}}></div>
-        <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-white rounded-full blur-2xl animate-float" style={{animationDelay: '2s'}}></div>
+        <div className="absolute bottom-20 right-10 w-48 h-48 bg-white rounded-full blur-3xl animate-float" style={{
+        animationDelay: '1s'
+      }}></div>
+        <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-white rounded-full blur-2xl animate-float" style={{
+        animationDelay: '2s'
+      }}></div>
       </div>
       
       <div className="container mx-auto px-4 py-20 relative z-10">
@@ -32,20 +34,11 @@ const HeroSection = () => {
               Sistemas de gestão, sites profissionais e emissores de notas fiscais.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
-              <Button
-                onClick={() => scrollToSection('servicos')}
-                size="lg"
-                className="bg-white text-brand-primary hover:bg-white/90 px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:shadow-xl hover:scale-105"
-              >
+              <Button onClick={() => scrollToSection('servicos')} size="lg" className="bg-white text-brand-primary hover:bg-white/90 px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:shadow-xl hover:scale-105">
                 Nossos Serviços
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
-              <Button
-                onClick={() => scrollToSection('contato')}
-                variant="outline"
-                size="lg"
-                className="border-2 border-white text-white hover:bg-white hover:text-brand-primary px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300"
-              >
+              <Button onClick={() => scrollToSection('contato')} variant="outline" size="lg" className="border-2 border-white hover:bg-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 text-zinc-950">
                 Fale Conosco
               </Button>
             </div>
@@ -98,8 +91,6 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default HeroSection;
