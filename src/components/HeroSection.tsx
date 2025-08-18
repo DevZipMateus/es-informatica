@@ -1,6 +1,8 @@
+
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import CircuitBackground from './CircuitBackground';
+
 const HeroSection = () => {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -10,23 +12,26 @@ const HeroSection = () => {
       });
     }
   };
-  return <div className="relative w-full h-screen overflow-hidden" style={{
-    backgroundColor: '#222222'
-  }}>
+
+  return (
+    <div className="relative w-full h-screen overflow-hidden" style={{
+      // --- ALTERAÇÃO DE COR AQUI ---
+      backgroundColor: '#cccccc' // Cor de fallback para cinza claro
+    }}>
       {/* Componente de Background Animado */}
       <div className="absolute top-0 left-0 w-full h-full z-0">
         <CircuitBackground />
       </div>
 
       {/* Conteúdo da Hero Section */}
-      <div className="relative z-10 flex flex-col justify-center items-center h-full text-white text-center px-6 py-12">
+      <div className="relative z-10 flex flex-col justify-center items-center h-full text-center px-6 py-12">
         {/* Container principal com fundo escurecido */}
         <div className="relative max-w-4xl mx-auto">
-          {/* Fundo preto esmaecido atrás do conteúdo */}
-          <div className="absolute inset-0 bg-black/50 rounded-3xl backdrop-blur-sm"></div>
+          {/* Fundo preto esmaecido atrás do conteúdo para manter a legibilidade */}
+          <div className="absolute inset-0 bg-black/70 rounded-3xl backdrop-blur-sm"></div>
           
           {/* Conteúdo com z-index maior para ficar acima do overlay */}
-          <div className="relative z-10 px-8 py-12 lg:px-16 lg:py-16">
+          <div className="relative z-10 px-8 py-12 lg:px-16 lg:py-16 text-white">
             {/* Título principal */}
             <h1 className="text-3xl sm:text-4xl lg:text-6xl xl:text-7xl font-bold mb-6 leading-tight">
               Inovação e <span className="text-red-400">Tecnologia</span>
@@ -62,6 +67,8 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
-    </div>;
+    </div>
+  );
 };
+
 export default HeroSection;

@@ -4,9 +4,9 @@ import React, { useRef, useEffect } from 'react';
 const CircuitBackground = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
-  // Cores para personalização
-  const backgroundColor = '#222222'; // Cinza-médio escuro
-  const lineColor = '#ff0000';       // Vermelho vivo
+  // --- ALTERAÇÃO DE COR AQUI ---
+  const backgroundColor = '#cccccc'; // Cinza claro
+  const lineColor = '#ff0000';       // Vermelho vivo (mantido)
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -20,20 +20,22 @@ const CircuitBackground = () => {
     
     // --- CONTROLE DE VELOCIDADE ---
     let lastUpdateTime = 0;
-    // Intervalo em milissegundos. Quanto MAIOR o número, MAIS LENTA a animação.
-    const updateInterval = 80; // Antes era instantâneo, agora atualiza a cada 80ms
+    const updateInterval = 80;
     
     // Ajusta o tamanho do canvas para preencher o container
     const resizeCanvas = () => {
       canvas.width = canvas.offsetWidth;
       canvas.height = canvas.offsetHeight;
+      // Define a cor de fundo inicial sólida quando o canvas é redimensionado
+      ctx.fillStyle = backgroundColor;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
     };
     
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
 
-    const gridSize = 25; // Tamanho dos segmentos do circuito
-    const particleCount = 70; // Quantidade de "pacotes de dados" na tela
+    const gridSize = 25;
+    const particleCount = 70;
 
     class Particle {
       x: number;
@@ -58,11 +60,10 @@ const CircuitBackground = () => {
       reset() {
         this.x = Math.floor(Math.random() * canvas.width / gridSize) * gridSize;
         this.y = Math.floor(Math.random() * canvas.height / gridSize) * gridSize;
-        this.ttl = Math.random() * 200 + 100; // Time to live (tempo de vida)
+        this.ttl = Math.random() * 200 + 100;
         this.life = this.ttl;
         this.history = [];
 
-        // Define uma direção inicial aleatória (cima, baixo, esquerda, direita)
         const directions = [[0, -1], [0, 1], [-1, 0], [1, 0]];
         const [vx, vy] = directions[Math.floor(Math.random() * 4)];
         this.vx = vx;
@@ -75,16 +76,14 @@ const CircuitBackground = () => {
           this.reset();
         }
 
-        // Adiciona a posição atual ao histórico para desenhar o rastro
         this.history.push({ x: this.x, y: this.y });
-        if (this.history.length > 20) { // Limita o tamanho do rastro
+        if (this.history.length > 20) {
           this.history.shift();
         }
 
         this.x += this.vx * gridSize;
         this.y += this.vy * gridSize;
 
-        // Chance de mudar de direção em cada "cruzamento"
         if (Math.random() > 0.95) {
           const directions = (this.vx === 0) ? [[-1, 0], [1, 0]] : [[0, -1], [0, 1]];
           const [vx, vy] = directions[Math.floor(Math.random() * 2)];
@@ -92,14 +91,12 @@ const CircuitBackground = () => {
           this.vy = vy;
         }
 
-        // Se sair da tela, reseta
         if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
           this.reset();
         }
       }
 
       draw() {
-        // Desenha o rastro
         ctx.beginPath();
         if (this.history.length > 1) {
           ctx.moveTo(this.history[0].x, this.history[0].y);
@@ -111,7 +108,6 @@ const CircuitBackground = () => {
           ctx.stroke();
         }
 
-        // Desenha a "cabeça" da partícula
         ctx.beginPath();
         ctx.arc(this.x, this.y, 3, 0, Math.PI * 2);
         ctx.fillStyle = lineColor;
@@ -119,44 +115,40 @@ const CircuitBackground = () => {
       }
     }
 
-    // Inicia as partículas
     for (let i = 0; i < particleCount; i++) {
       particles.push(new Particle());
     }
 
-    // A função animate agora recebe o tempo atual
     const animate = (currentTime: number) => {
-      // O desenho acontece em todo frame para a animação continuar fluida
-      ctx.fillStyle = `rgba(34, 34, 34, 0.2)`;
+      // --- ALTERAÇÃO DE COR AQUI ---
+      // Desenha um retângulo cinza claro semi-transparente para criar o efeito de rastro
+      // O RGB (204, 204, 204) corresponde ao hexadecimal #cccccc
+      ctx.fillStyle = `rgba(204, 204, 204, 0.2)`;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       
       particles.forEach(p => {
-        p.draw(); // O desenho é constante
+        p.draw();
       });
       
-      // --- LÓGICA DE CONTROLE DE VELOCIDADE ---
-      // Calcula o tempo passado desde a última atualização
       const deltaTime = currentTime - lastUpdateTime;
 
-      // Apenas atualiza a posição se o tempo passado for maior que o nosso intervalo
       if (deltaTime > updateInterval) {
-        lastUpdateTime = currentTime; // Reseta o tempo da última atualização
+        lastUpdateTime = currentTime;
         particles.forEach(p => {
-          p.update(); // A atualização da lógica/posição só acontece aqui
+          p.update();
         });
       }
 
       animationFrameId = requestAnimationFrame(animate);
     };
 
-    animate(0); // Inicia a animação
+    animate(0);
 
-    // Limpeza ao desmontar o componente
     return () => {
       cancelAnimationFrame(animationFrameId);
       window.removeEventListener('resize', resizeCanvas);
     };
-  }, [lineColor, backgroundColor]); // Roda o efeito novamente se as cores mudarem
+  }, [lineColor, backgroundColor]);
 
   return (
     <canvas 
