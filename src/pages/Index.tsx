@@ -13,17 +13,21 @@ import WhatsAppFloat from '@/components/WhatsAppFloat';
 
 const Index = () => {
   return (
-    <div className="min-h-screen hero-gradient">
+    <div className="min-h-screen bg-white">
       {/* SEO Meta Tags - handled in index.html */}
       <Header />
       <main>
-        <HeroSection />
-        <EgestorERP />
-        <AboutSection />
-        <ServicesSection />
-        <PlansSection />
-        <LocationSection />
-        <ContactSection />
+        <div className="hero-gradient">
+          <HeroSection />
+        </div>
+        <div className="bg-white">
+          <EgestorERP />
+          <AboutSection />
+          <ServicesSection />
+          <PlansSection />
+          <LocationSection />
+          <ContactSection />
+        </div>
       </main>
       <Footer />
       <WhatsAppFloat />
