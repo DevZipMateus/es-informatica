@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { MessageCircle, X } from 'lucide-react';
+import { X } from 'lucide-react';
 
 const WhatsAppFloat = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -81,7 +81,7 @@ const WhatsAppFloat = () => {
           {/* Button */}
           <button
             onClick={handleWhatsAppClick}
-            className={`bg-green-500 hover:bg-green-600 text-white rounded-full p-4 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 animate-float cursor-pointer relative ${
+            className={`bg-transparent rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 animate-float cursor-pointer relative overflow-hidden ${
               isClicked ? 'scale-95' : ''
             }`}
             aria-label="Abrir WhatsApp para contato"
@@ -91,7 +91,11 @@ const WhatsAppFloat = () => {
               touchAction: 'manipulation'
             }}
           >
-            <MessageCircle className="h-6 w-6" />
+            <img 
+              src="/lovable-uploads/85480ad5-b80f-49dc-b43e-987b7b6296f9.png" 
+              alt="WhatsApp" 
+              className="h-16 w-16 rounded-full"
+            />
           </button>
 
           {/* Pulse Animation */}
