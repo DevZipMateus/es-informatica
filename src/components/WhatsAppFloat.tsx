@@ -37,18 +37,12 @@ const WhatsAppFloat = () => {
     const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
     console.log('Opening WhatsApp URL:', whatsappURL);
     
-    // Tentar abrir o WhatsApp
+    // Abrir o WhatsApp em nova aba
     try {
-      const newWindow = window.open(whatsappURL, '_blank', 'noopener,noreferrer');
-      if (!newWindow) {
-        console.error('Popup blocker may have prevented opening WhatsApp');
-        // Fallback: tentar redirecionar na mesma aba
-        window.location.href = whatsappURL;
-      }
+      window.open(whatsappURL, '_blank', 'noopener,noreferrer');
+      console.log('WhatsApp opened successfully');
     } catch (error) {
       console.error('Error opening WhatsApp:', error);
-      // Fallback final
-      window.location.href = whatsappURL;
     }
   };
 
