@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Send, Phone, Mail, MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -32,21 +31,28 @@ const ContactSection = () => {
       return;
     }
 
-    // Create WhatsApp message
-    const message = `Olá! Gostaria de solicitar um orçamento:
+    // Create email content
+    const subject = `Solicitação de Orçamento - ${formData.name}`;
+    const body = `Olá! Gostaria de solicitar um orçamento:
 
-*Nome:* ${formData.name}
-*E-mail:* ${formData.email}
-*Telefone:* ${formData.phone || 'Não informado'}
-*Serviço:* ${formData.service || 'Não especificado'}
+Nome: ${formData.name}
+E-mail: ${formData.email}
+Telefone: ${formData.phone || 'Não informado'}
+Serviço: ${formData.service || 'Não especificado'}
 
-*Mensagem:*
-${formData.message}`;
+Mensagem:
+${formData.message}
 
-    const whatsappUrl = `https://wa.me/5541996667472?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
+--
+Enviado através do site ES Informática`;
+
+    // Create mailto URL
+    const mailtoUrl = `mailto:edinho@esinformatica.com.br?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     
-    toast.success('Redirecionando para o WhatsApp...');
+    // Open mailto
+    window.location.href = mailtoUrl;
+    
+    toast.success('Abrindo seu cliente de email...');
     
     // Reset form
     setFormData({
@@ -185,10 +191,10 @@ ${formData.message}`;
                 <Button
                   type="submit"
                   size="lg"
-                  className="w-full bg-green-600 hover:bg-green-700 text-white py-4 rounded-xl font-semibold text-lg"
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white py-4 rounded-xl font-semibold text-lg"
                 >
                   <Send className="mr-2 h-5 w-5" />
-                  Enviar via WhatsApp
+                  Enviar por E-mail
                 </Button>
               </form>
             </div>
