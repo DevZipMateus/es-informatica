@@ -38,25 +38,25 @@ const Header = () => {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-lg transition-all duration-300">
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16 lg:h-20">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-lg transition-all duration-300 w-full">
+      <div className="container mx-auto px-4 max-w-full">
+        <div className="flex items-center justify-between h-16 lg:h-20 w-full">
           {/* Logo */}
-          <div className="flex items-center">
+          <div className="flex items-center flex-shrink-0">
             <img 
               src="/lovable-uploads/6233a48f-c2a8-4f2d-81b9-30c66be4ee1f.png" 
               alt="ES INFORMÁTICA - Inovação e tecnologia"
-              className="h-12 lg:h-16 w-auto"
+              className="h-10 lg:h-12 w-auto max-w-none"
             />
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
+          <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8 flex-shrink-0">
             {menuItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="text-sm font-medium text-brand-secondary hover:text-brand-primary transition-colors duration-200 relative group"
+                className="text-sm font-medium text-brand-secondary hover:text-brand-primary transition-colors duration-200 relative group whitespace-nowrap"
               >
                 {item.label}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-primary transition-all duration-200 group-hover:w-full"></span>
@@ -64,7 +64,7 @@ const Header = () => {
             ))}
             <Button 
               onClick={() => scrollToSection('contato')}
-              className="bg-brand-primary hover:bg-brand-primary/90 text-white px-6 py-2 rounded-lg font-medium transition-all duration-200 hover:shadow-lg"
+              className="bg-brand-primary hover:bg-brand-primary/90 text-white px-4 py-2 rounded-lg font-medium transition-all duration-200 hover:shadow-lg text-sm whitespace-nowrap flex-shrink-0"
             >
               Fale Conosco
             </Button>
@@ -73,7 +73,7 @@ const Header = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden p-2 rounded-lg text-brand-secondary hover:text-brand-primary transition-colors"
+            className="lg:hidden p-2 rounded-lg text-brand-secondary hover:text-brand-primary transition-colors flex-shrink-0"
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -81,8 +81,8 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="lg:hidden bg-white border-t border-gray-200">
-            <nav className="py-4 space-y-2">
+          <div className="lg:hidden bg-white border-t border-gray-200 w-full">
+            <nav className="py-4 space-y-2 max-w-full">
               {menuItems.map((item) => (
                 <button
                   key={item.id}
