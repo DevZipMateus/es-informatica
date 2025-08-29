@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { toast } from 'sonner';
+import { supabase } from '@/integrations/supabase/client';
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -15,6 +16,8 @@ const ContactSection = () => {
     message: ''
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -23,7 +26,7 @@ const ContactSection = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     // Validation
@@ -32,37 +35,49 @@ const ContactSection = () => {
       return;
     }
 
-    // Create email content
-    const subject = `Solicitação de Orçamento - ${formData.name}`;
-    const body = `Olá! Gostaria de solicitar um orçamento:
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      toast.error('Por favor, insira um email válido.');
+      return;
+    }
 
-Nome: ${formData.name}
-E-mail: ${formData.email}
-Telefone: ${formData.phone || 'Não informado'}
-Serviço: ${formData.service || 'Não especificado'}
+    setIsSubmitting(true);
 
-Mensagem:
-${formData.message}
+    try {
+      const { data, error } = await supabase.functions.invoke('send-contact-email', {
+        body: {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          service: formData.service,
+          message: formData.message
+        }
+      });
 
---
-Enviado através do site ES Informática`;
+      if (error) {
+        console.error('Erro ao enviar email:', error);
+        toast.error('Erro ao enviar mensagem. Tente novamente.');
+        return;
+      }
 
-    // Create mailto URL
-    const mailtoUrl = `mailto:edinho@esinformatica.com.br?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    
-    // Open mailto
-    window.location.href = mailtoUrl;
-    
-    toast.success('Abrindo seu cliente de email...');
-    
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      service: '',
-      message: ''
-    });
+      toast.success('Solicitação enviada com sucesso! Entraremos em contato em breve.');
+      
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        service: '',
+        message: ''
+      });
+
+    } catch (error) {
+      console.error('Erro ao enviar formulário:', error);
+      toast.error('Erro ao enviar mensagem. Tente novamente.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactMethods = [
@@ -123,7 +138,8 @@ Enviado através do site ES Informática`;
                       onChange={handleInputChange}
                       placeholder="Seu nome completo"
                       required
-                      className="bg-white border-gray-300 text-gray-900 placeholder:text-gray-500 text-sm sm:text-base"
+                      disabled={isSubmitting}
+                      className="bg-white border-gray-300 text-gray-900 placeholder:text-gray-500 text-sm sm:text-base disabled:opacity-50"
                     />
                   </div>
                   <div>
@@ -135,7 +151,8 @@ Enviado através do site ES Informática`;
                       value={formData.phone}
                       onChange={handleInputChange}
                       placeholder="(41) 99999-9999"
-                      className="bg-white border-gray-300 text-gray-900 placeholder:text-gray-500 text-sm sm:text-base"
+                      disabled={isSubmitting}
+                      className="bg-white border-gray-300 text-gray-900 placeholder:text-gray-500 text-sm sm:text-base disabled:opacity-50"
                     />
                   </div>
                 </div>
@@ -151,7 +168,8 @@ Enviado através do site ES Informática`;
                     onChange={handleInputChange}
                     placeholder="seu@email.com"
                     required
-                    className="bg-white border-gray-300 text-gray-900 placeholder:text-gray-500 text-sm sm:text-base"
+                    disabled={isSubmitting}
+                    className="bg-white border-gray-300 text-gray-900 placeholder:text-gray-500 text-sm sm:text-base disabled:opacity-50"
                   />
                 </div>
                 
@@ -163,7 +181,8 @@ Enviado através do site ES Informática`;
                     name="service"
                     value={formData.service}
                     onChange={handleInputChange}
-                    className="w-full px-3 py-2 bg-white border border-gray-300 rounded-lg text-gray-900 focus:border-red-600 focus:outline-none focus:ring-2 focus:ring-red-600/20 text-sm sm:text-base"
+                    disabled={isSubmitting}
+                    className="w-full px-3 py-2 bg-white border border-gray-300 rounded-lg text-gray-900 focus:border-red-600 focus:outline-none focus:ring-2 focus:ring-red-600/20 text-sm sm:text-base disabled:opacity-50"
                   >
                     <option value="">Selecione um serviço</option>
                     <option value="sistema-gestao">Sistema de Gestão</option>
@@ -185,17 +204,19 @@ Enviado através do site ES Informática`;
                     placeholder="Descreva seu projeto ou necessidade..."
                     rows={4}
                     required
-                    className="bg-white border-gray-300 text-gray-900 placeholder:text-gray-500 resize-none text-sm sm:text-base"
+                    disabled={isSubmitting}
+                    className="bg-white border-gray-300 text-gray-900 placeholder:text-gray-500 resize-none text-sm sm:text-base disabled:opacity-50"
                   />
                 </div>
                 
                 <Button
                   type="submit"
                   size="lg"
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg"
+                  disabled={isSubmitting}
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <Send className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
-                  Enviar por E-mail
+                  {isSubmitting ? 'Enviando...' : 'Enviar Solicitação'}
                 </Button>
               </form>
             </div>
